@@ -6,6 +6,126 @@ class Grafo:
         self.arestasGrafo = arestasGrafo
 
     #-------------------------------------------------------------------------------------
+    def criaGrafo(self):
+        vertices = input("Digite Quantos Vertices possuirá o Grafo: ")
+        vertices = int(vertices.strip())
+
+
+        print("----------------------------------------------------")
+        print("            Menu de Criação de Grafo                ")
+        print("----------------------------------------------------")
+        print("Digite [1] para adicionar vertices ao Grafo         ")
+        print("Digite [2] para Adicionar arestas entre os Vertices ")
+        print("Digite [3] para  visualizar os vertices do Grafo    ")
+        print("Digite [4] para vizualizar a a lista de Adjacencias ")
+        print("Digite [5] para visualizar o Grafo todo             ")
+        print("Digite [0] para Sair                                ")
+        print("----------------------------------------------------")
+        escolha = input("Digite sua escolha: ")
+        escolha = int(escolha.strip())
+
+        if escolha == 1:
+            self.adicionaVertices()
+        elif escolha == 2:
+            self.adicionaAresta()
+        elif escolha == 3:
+            self.representaListaAdj()
+        elif escolha == 4:
+            self.representaMatrizAdj
+        elif escolha == 5:
+            self.representacaoGrafo
+        elif escolha == 0:
+            print("Encerra Programa!")
+        else:
+            self.criaGrafo()
+
+    #-------------------------------------------------------------------------------------
+    def adicionaAresta(self):
+
+        
+
+        while True:
+            try:
+
+                verticeSaida = ''
+                print("-------------------------------------------------------")
+                print(f'Arestas: {self.arestasGrafo}')
+                print("-------------------------------------------------------")
+                print(f'Vertices: {self.grafosTotais}')
+                verticeSaida = input('Digite o Vertice de saida da aresta: ')
+                verticeSaida = int(verticeSaida.strip())
+
+                if verticeSaida not in self.grafosTotais:
+                    print("Vertice não encontrado!")
+                else:
+                    while True:
+                        verticeEntrada = ''
+                        try:
+                            print("-------------------------------------------------------")
+                            print(f'Vertices: {self.grafosTotais}')
+                            verticeEntrada = input('Digite o Vertice de entrada da aresta: ')
+                            verticeEntrada = int(verticeEntrada.strip())
+
+                            if verticeEntrada not in self.grafosTotais:
+                                print("Vertice não encontrado!")
+                            else:
+                                # Adiciona a aresta efetivamente
+                                self.arestasGrafo.append((verticeSaida, verticeEntrada))
+                                print(f'Aresta {verticeSaida} --> {verticeEntrada} cadastrada com sucesso!')
+                                
+                                # Sai do loop interno após a adição da aresta
+                                break  
+
+                        except ValueError:
+                            print("Digite um vertice válido!")
+
+            except ValueError:
+                print("Digite um vertice válido!")
+
+            # Sai do loop 
+            break
+               
+        #Volta ao Menu
+        self.criaGrafo()
+
+    #-------------------------------------------------------------------------------------       
+    def representaListaAdj(self):
+        pass
+
+    #-------------------------------------------------------------------------------------
+    def representaMatrizAdj(self):
+        pass
+
+    #-------------------------------------------------------------------------------------
+    def adicionaVertices(self):
+        listaVertices = []
+        while True:
+            try:
+                vertices = input("Inserir um numero de vertices: ")
+                vertices = int(vertices.strip())
+                print(f'Você inseriu {vertices}')
+
+                #Gera uma lista de vertices
+                if vertices >= 1:
+                    for i in range(1, vertices + 1):
+                        listaVertices.append(i)
+                else:
+                    print("Seu valor não é válido como número de arestas!")
+                self.grafosTotais = listaVertices
+
+                break
+            except ValueError:
+                print("Erro: Por favor, insira um número inteiro válido.")
+            
+        #Volta ao Menu
+        self.criaGrafo()
+
+    #------------------------------------------------------------------------------------- 
+    def representacaoGrafo(self):
+        print(f'Vertices: {self.grafosTotais}')
+        print(f'Arestas: {self.arestasGrafo}')
+
+    #-------------------------------------------------------------------------------------
     def cadastrarGrafos(self):
         tipoGrafo = '0'
         escolha = input('Deseja cadastrar um Grafo [y/n]: ')
