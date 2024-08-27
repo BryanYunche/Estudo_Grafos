@@ -41,9 +41,6 @@ class Grafo:
 
     #-------------------------------------------------------------------------------------
     def adicionaAresta(self):
-
-        
-
         while True:
             try:
 
@@ -90,6 +87,9 @@ class Grafo:
 
     #-------------------------------------------------------------------------------------       
     def representaListaAdj(self):
+
+
+        
         pass
 
     #-------------------------------------------------------------------------------------
@@ -124,6 +124,18 @@ class Grafo:
     def representacaoGrafo(self):
         print(f'Vertices: {self.grafosTotais}')
         print(f'Arestas: {self.arestasGrafo}')
+
+        while True:
+            escolha = input("Deseja Retornar ao Menu? [y/n]: ")
+            escolha = escolha.strip()
+
+            if escolha == 'y':
+                self.criaGrafo()
+            elif escolha == 'n':
+                print("Programa Encerrado!")
+            else:
+                print("Entrada Inválida!")
+                self.representacaoGrafo()
 
     #-------------------------------------------------------------------------------------
     def cadastrarGrafos(self):
