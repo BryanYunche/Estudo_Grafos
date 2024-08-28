@@ -29,9 +29,9 @@ class Grafo:
         elif escolha == 2:
             self.adicionaAresta()
         elif escolha == 3:
-            self.representaListaAdj()
+            self.apresentaListaAdj()
         elif escolha == 4:
-            self.representaMatrizAdj
+            self.apresentaMatrizAdj()
         elif escolha == 5:
             self.representacaoGrafo
         elif escolha == 0:
@@ -86,14 +86,33 @@ class Grafo:
         self.criaGrafo()
 
     #-------------------------------------------------------------------------------------       
-    def representaListaAdj(self):
+    def criaListaAdj(self):
+        for vertice in self.grafosTotais:
+            listaAdjTemp = []
+            listaAdjTemp.append(vertice)
+            for aresta in self.arestasGrafo:
+                if aresta[0] == vertice:
+                    listaAdjTemp.append(aresta[1])
 
 
+            #Adiciona a lista de Ajacencias
+            self.listaAdjacencias.extend(listaAdjTemp)
         
-        pass
+        return self.listaAdjacencias
+
+    def apresentaListaAdj(self):
+        listaAdj = (self.criaListaAdj())
+
+        for lista in listaAdj:
+            subListaAdj = ''
+            subListaAdj = f'{lista[0]}:'
+            for adj in lista:
+                subListaAdj = subListaAdj + f' ---> {adj} '
+
+            print(f'Adjacências do Grafo {lista[0]} [ {subListaAdj} ]') 
 
     #-------------------------------------------------------------------------------------
-    def representaMatrizAdj(self):
+    def apresentaMatrizAdj(self):
         pass
 
     #-------------------------------------------------------------------------------------
