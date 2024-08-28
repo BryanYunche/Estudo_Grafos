@@ -18,7 +18,8 @@ class Grafo:
         print("Digite [2] para Adicionar arestas entre os Vertices ")
         print("Digite [3] para  visualizar os vertices do Grafo    ")
         print("Digite [4] para vizualizar a a lista de Adjacencias ")
-        print("Digite [5] para visualizar o Grafo todo             ")
+        print("Digite [5] para visualizar a Matriz de Adjacencias  ")
+        print("Digite [6] para visualizar o Grafo todo             ")
         print("Digite [0] para Sair                                ")
         print("----------------------------------------------------")
         escolha = input("Digite sua escolha: ")
@@ -33,7 +34,9 @@ class Grafo:
         elif escolha == 4:
             self.apresentaMatrizAdj()
         elif escolha == 5:
-            self.representacaoGrafo
+            self.representacaoGrafo()
+        elif escolha == 6:
+            self.apresentaMatrizAdj()
         elif escolha == 0:
             print("Encerra Programa!")
         else:
@@ -112,8 +115,48 @@ class Grafo:
             print(f'Adjacências do Grafo {lista[0]} [ {subListaAdj} ]') 
 
     #-------------------------------------------------------------------------------------
-    def apresentaMatrizAdj(self):
-        pass
+    def criaMatrizAdj(self):
+        matrizAdj = []
+        
+        for verticeX  in self.grafosTotais:
+            linhaTemp = []
+            for verticeY in self.grafosTotais:
+                if ((verticeX, verticeY) in self.arestasGrafo):
+                    linhaTemp.append(1)
+                else:
+                    linhaTemp.append(0)
+
+            #Adiciona efetivamente uma linha matriz
+            matrizAdj.append(linhaTemp)
+        
+        #Adiciona a Matriz de Adjacências como atributo no grafo
+        self.matrizAdjacencias = matrizAdj
+
+        return self.matrizAdjacencias
+    
+    def apresentaMatrizAdj(self):      
+        #Contador para iterar a inserção do vertice correspondente de cada linha
+        cont = 0
+
+        #Espaço da coluna dos outros vertices
+        print("   ", end='|')
+
+        #Linha de cima da Matriz
+        for vertices in self.grafosTotais:
+            print(f' {vertices} ', end='|')
+
+        #Tamanho do tracejado ajustado de acordo com o tamanho da Matriz
+        print('\n' + len(self.grafosTotais)*6*"=")
+
+        #Valor Real da Matriz
+        for linha in self.matrizAdjacencias:
+            linha.insert(0, self.grafosTotais[cont])
+            for valor in linha:
+                print(f' {valor} ', end='|')
+            print()
+            print((len(self.matrizAdjacencias)*6*"="))
+
+            cont += 1
 
     #-------------------------------------------------------------------------------------
     def adicionaVertices(self):
@@ -310,4 +353,5 @@ class Grafo:
     #-------------------------------------------------------------------------------------
     def getArestas(self):
         return self.arestasGrafo
+    
         
