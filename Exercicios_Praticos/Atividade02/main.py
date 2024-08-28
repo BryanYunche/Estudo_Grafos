@@ -1,28 +1,26 @@
 from Grafo_Matriz_Lista import Grafo
 
+
+print("----------------- Grafo 01 -----------------")
 grafo01 = Grafo()
-grafo02 = Grafo()
+grafo01.criaGrafo()
 
-#Cadastra o Grafo
-grafo01.cadastrarGrafos()
-grafo02.cadastrarGrafos()
 
-#Mostra as informações do Grafo 01
-print("-----------------------------------------------------------------")
-print(f'Vestices do Grafo1: {grafo01.getVertices()}')
-print(f'Arestas do Grafo1: {grafo01.getArestas()}')
+print("----------------- Grafo 02 -----------------")
+grafo02 = Grafo(grafosTotais = ['A', 'B', 'C', 'D'], 
+                arestasGrafo = [('A', 'B'), ('B', 'A'), ('B', 'C'), ('C', 'B'), ('C', 'A'), ('A', 'C'), ('D', 'B'), ('B', 'D')])
 
-#Mostra as informações do Grafo 02
-print("-----------------------------------------------------------------")
-print(f'Vestices do Grafo2: {grafo02.getVertices()}')
-print(f'Arestas do Grafo2: {grafo02.getArestas()}')
+grafo02.apresentaMatrizAdj()
 
-#Produto Cartesiano
-vertices1 = grafo01.getVertices()
-arestas1 = grafo01.getArestas()
 
-vertices2 = grafo02.getVertices()
-arestas2 = grafo02.getArestas()
+def produtoVetorialGrafo(grafoX, grafoY):
+    #Produto dos vertices
+    listaVertices01 = grafoX.getVertices()
+    listaVertices02 = grafoY.getVertices()
+
+    #produto Arestas
+    listaArestas01 = grafoX.getArestas()
+    listaArestas02 = grafoY.getArestas()
 
 #Formato que está a lista de vertices: ['a', 'b', 'c', 'd']
 #Formato que está a lista de arestas: [(a, b), (b, c), (c, a), (d, b)]

@@ -16,8 +16,8 @@ class Grafo:
         print("----------------------------------------------------")
         print("Digite [1] para adicionar vertices ao Grafo         ")
         print("Digite [2] para Adicionar arestas entre os Vertices ")
-        print("Digite [3] para  visualizar os vertices do Grafo    ")
-        print("Digite [4] para vizualizar a a lista de Adjacencias ")
+        print("Digite [3] para visualizar os vertices do Grafo     ")
+        print("Digite [4] para visualizar a a lista de Adjacencias ")
         print("Digite [5] para visualizar a Matriz de Adjacencias  ")
         print("Digite [6] para visualizar o Grafo todo             ")
         print("Digite [0] para Sair                                ")
@@ -64,7 +64,7 @@ class Grafo:
                             print("-------------------------------------------------------")
                             print(f'Vertices: {self.grafosTotais}')
                             verticeEntrada = input('Digite o Vertice de entrada da aresta: ')
-                            verticeEntrada = int(verticeEntrada.strip())
+                            verticeEntrada = verticeEntrada.strip()
 
                             if verticeEntrada not in self.grafosTotais:
                                 print("Vertice não encontrado!")
@@ -122,9 +122,9 @@ class Grafo:
             linhaTemp = []
             for verticeY in self.grafosTotais:
                 if ((verticeX, verticeY) in self.arestasGrafo):
-                    linhaTemp.append(1)
+                    linhaTemp.append('1')
                 else:
-                    linhaTemp.append(0)
+                    linhaTemp.append('0')
 
             #Adiciona efetivamente uma linha matriz
             matrizAdj.append(linhaTemp)
@@ -134,7 +134,11 @@ class Grafo:
 
         return self.matrizAdjacencias
     
-    def apresentaMatrizAdj(self):      
+    def apresentaMatrizAdj(self):
+
+        #Gera MAtriz de adjacências  
+        self.criaMatrizAdj()
+
         #Contador para iterar a inserção do vertice correspondente de cada linha
         cont = 0
 

@@ -7,15 +7,19 @@ class Grafo:
 
     #-------------------------------------------------------------------------------------
     def criaGrafo(self):
+        vertices = input("Digite Quantos Vertices possuirá o Grafo: ")
+        vertices = int(vertices.strip())
+
 
         print("----------------------------------------------------")
-        print("     Menu de Criação de Grafo NÃO DIRECIONADO       ")
+        print("            Menu de Criação de Grafo                ")
         print("----------------------------------------------------")
         print("Digite [1] para adicionar vertices ao Grafo         ")
         print("Digite [2] para Adicionar arestas entre os Vertices ")
-        print("Digite [3] para vizualizar a a lista de Adjacencias ")
-        print("Digite [4] para visualizar a Matriz de Adjacencias  ")
-        print("Digite [5] para visualizar o Grafo todo             ")
+        print("Digite [3] para visualizar os vertices do Grafo     ")
+        print("Digite [4] para visualizar a a lista de Adjacencias ")
+        print("Digite [5] para visualizar a Matriz de Adjacencias  ")
+        print("Digite [6] para visualizar o Grafo todo             ")
         print("Digite [0] para Sair                                ")
         print("----------------------------------------------------")
         escolha = input("Digite sua escolha: ")
@@ -31,6 +35,8 @@ class Grafo:
             self.apresentaMatrizAdj()
         elif escolha == 5:
             self.representacaoGrafo()
+        elif escolha == 6:
+            self.apresentaMatrizAdj()
         elif escolha == 0:
             print("Encerra Programa!")
         else:
@@ -58,14 +64,13 @@ class Grafo:
                             print("-------------------------------------------------------")
                             print(f'Vertices: {self.grafosTotais}')
                             verticeEntrada = input('Digite o Vertice de entrada da aresta: ')
-                            verticeEntrada = int(verticeEntrada.strip())
+                            verticeEntrada = verticeEntrada.strip()
 
                             if verticeEntrada not in self.grafosTotais:
                                 print("Vertice não encontrado!")
                             else:
-                                # Adiciona a aresta efetivamente nos dois sentidos
+                                # Adiciona a aresta efetivamente
                                 self.arestasGrafo.append((verticeSaida, verticeEntrada))
-                                self.arestasGrafo.append((verticeEntrada, verticeSaida))
                                 print(f'Aresta {verticeSaida} --> {verticeEntrada} cadastrada com sucesso!')
                                 
                                 # Sai do loop interno após a adição da aresta
@@ -117,9 +122,9 @@ class Grafo:
             linhaTemp = []
             for verticeY in self.grafosTotais:
                 if ((verticeX, verticeY) in self.arestasGrafo):
-                    linhaTemp.append(1)
+                    linhaTemp.append('1')
                 else:
-                    linhaTemp.append(0)
+                    linhaTemp.append('0')
 
             #Adiciona efetivamente uma linha matriz
             matrizAdj.append(linhaTemp)
@@ -129,8 +134,9 @@ class Grafo:
 
         return self.matrizAdjacencias
     
-    def apresentaMatrizAdj(self):  
-        #Cria a MAtriz 
+    def apresentaMatrizAdj(self):
+
+        #Gera MAtriz de adjacências  
         self.criaMatrizAdj()
 
         #Contador para iterar a inserção do vertice correspondente de cada linha
@@ -155,19 +161,6 @@ class Grafo:
             print((len(self.matrizAdjacencias)*6*"="))
 
             cont += 1
-        
-        while True:
-            escolha = input("Deseja Retornar ao Menu? [y/n]: ")
-            escolha = escolha.strip().lower()
-
-            if escolha == 'y':
-                self.criaGrafo()
-            elif escolha == 'n':
-                print("Programa Encerrado!")
-            else:
-                print("Entrada Inválida!")
-                self.representacaoGrafo()
-
 
     #-------------------------------------------------------------------------------------
     def adicionaVertices(self):
@@ -200,7 +193,7 @@ class Grafo:
 
         while True:
             escolha = input("Deseja Retornar ao Menu? [y/n]: ")
-            escolha = escolha.strip().lower()
+            escolha = escolha.strip()
 
             if escolha == 'y':
                 self.criaGrafo()
