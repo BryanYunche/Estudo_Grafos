@@ -1,42 +1,32 @@
-from Grafo_Matriz_Lista import Grafo
-
-
-print("----------------- Grafo 01 -----------------")
-grafo01 = Grafo()
-grafo01.criaGrafo()
-
+from grafo_Matriz_Lista import Grafo
+from produtoVetorialGrafo import produtoCartesiano
 
 print("----------------- Grafo 02 -----------------")
-grafo02 = Grafo(grafosTotais = ['A', 'B', 'C', 'D'], 
+grafo01 = Grafo(grafosTotais = ['A', 'B', 'C', 'D'], 
                 arestasGrafo = [('A', 'B'), ('B', 'A'), ('B', 'C'), ('C', 'B'), ('C', 'A'), ('A', 'C'), ('D', 'B'), ('B', 'D')])
+grafo01.apresentaMatrizAdj()
+grafo01.apresentaListaAdj()
 
+print("=====================================================================")
+
+print("----------------- Grafo 03 -----------------")
+grafo02 = Grafo(
+    grafosTotais = ['X', 'Y', 'Z'],
+    arestasGrafo = [('X', 'Y'), ('Y', 'Z'), ('Z', 'X'), ('X', 'Z'), ('Y', 'X')])
 grafo02.apresentaMatrizAdj()
+grafo02.apresentaListaAdj()
 
+print("=====================================================================")
 
-def produtoVetorialGrafo(grafoX, grafoY):
-    #Produto dos vertices
-    listaVertices01 = grafoX.getVertices()
-    listaVertices02 = grafoY.getVertices()
+print("----------------- Grafo 04 -----------------")
+grafo03 = Grafo(
+    grafosTotais = ['P', 'Q', 'R', 'S'],
+    arestasGrafo = [('P', 'Q'), ('Q', 'R'), ('R', 'S'), ('S', 'P'), ('P', 'R'), ('Q', 'S')])
 
-    #produto Arestas
-    listaArestas01 = grafoX.getArestas()
-    listaArestas02 = grafoY.getArestas()
+grafo03.apresentaMatrizAdj()
+grafo03.apresentaListaAdj()
 
-#Formato que está a lista de vertices: ['a', 'b', 'c', 'd']
-#Formato que está a lista de arestas: [(a, b), (b, c), (c, a), (d, b)]
+print("=====================================================================")
 
-#Formato que está a lista de vertices: ['1', '2', '3', '4']
-#Formato que está a lista de arestas: [('1', '2'), ('2', '3'), ('3', '1'), ('4', '2')]
-
-#Lógica
-#Multiplicar cada aresta do Grafo 01 por cada vertice do Grafo 02
-    # Selecionar a aresta do Grafo 01 (x, y)
-    # Multiplicar cada vertice do Grafo 02 , encontrado nas arestas, pela aresta (x, y) do Grafo 01
-    # Sendo assim, cada vertice vai ocupar o a possição y no novo par ordenado gerado 
-#Multiplicar cada aresta do Grafo 02 por cada vertice do Grafo 01
-    # Selecionar a aresta do Grafo 02 (x, y)
-    # Multiplicar cada vertice do Grafo 01 , encontrado nas arestas, pela aresta (x, y) do Grafo 02
-    # Sendo assim, cada vertice vai ocupar o a possição x no novo par ordenado gerado
-#Multiplicar cada vertice por cada vertice
-    #Simplexmente vai ser V1 X V2
+produtoCartesiano(grafo01.grafosTotais, grafo02.grafosTotais, grafo01.arestasGrafo, grafo02.arestasGrafo)
 

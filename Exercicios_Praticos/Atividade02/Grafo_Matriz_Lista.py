@@ -90,29 +90,38 @@ class Grafo:
 
     #-------------------------------------------------------------------------------------       
     def criaListaAdj(self):
+        self.listaAdjacencias = []  
+
         for vertice in self.grafosTotais:
-            listaAdjTemp = []
-            listaAdjTemp.append(vertice)
+            listaAdjTemp = [vertice]  
+
             for aresta in self.arestasGrafo:
                 if aresta[0] == vertice:
                     listaAdjTemp.append(aresta[1])
 
+            # Adiciona a lista de adjacências para o vértice atual
+            self.listaAdjacencias.append(listaAdjTemp)
 
-            #Adiciona a lista de Ajacencias
-            self.listaAdjacencias.extend(listaAdjTemp)
-        
         return self.listaAdjacencias
 
     def apresentaListaAdj(self):
-        listaAdj = (self.criaListaAdj())
+        listaAdj = self.criaListaAdj()  
 
         for lista in listaAdj:
-            subListaAdj = ''
-            subListaAdj = f'{lista[0]}:'
-            for adj in lista:
-                subListaAdj = subListaAdj + f' ---> {adj} '
+            vertice = lista[0]  
+            adjacente = lista[1:]  
 
-            print(f'Adjacências do Grafo {lista[0]} [ {subListaAdj} ]') 
+            subListaAdj = f'{vertice}:'
+
+            # Verifica se há adjacentes e os adiciona à string
+            if adjacente:
+                for adj in adjacente:
+                    subListaAdj += f' ---> {adj}'
+            else:
+                subListaAdj += ' Nenhum adjacente'
+
+            # Imprime a lista de adjacências do vértice atual
+            print(f'Adjacências do vértice {vertice}: [ {subListaAdj.strip()} ]')
 
     #-------------------------------------------------------------------------------------
     def criaMatrizAdj(self):
