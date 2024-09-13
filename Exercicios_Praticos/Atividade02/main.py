@@ -29,4 +29,5 @@ grafo03.apresentaListaAdj()
 print("=====================================================================")
 
 produtoCartesiano(grafo01.grafosTotais, grafo02.grafosTotais, grafo01.arestasGrafo, grafo02.arestasGrafo)
+produtoCartesiano()
 
