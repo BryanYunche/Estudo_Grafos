@@ -17,6 +17,9 @@ class DFS(Grafo):
 
     def get_dicionario_grafos(self):
         return self.dicionarioGrafos
+    
+    def get_ciclos(self):
+        return self.ciclos
 
     #Constroi dicionário de grafos Brancos
     def DFS_constroi_dicionario(self):
@@ -48,7 +51,7 @@ class DFS(Grafo):
     def DFS_procura(self):
         if self.dicionarioGrafos == []:
             self.DFS_constroi_dicionario()
-
+        
         for i in range(len(self.dicionarioGrafos)):
             if self.dicionarioGrafos[i].get('Cor') == 'Branco':
                 self.dicionarioGrafos[i]['Anterior'] = 'Raiz'
@@ -75,13 +78,14 @@ class DFS(Grafo):
         #Conta um ao tempo do contador
         self.tempo += 1
         for indiceVerticeAdj in self.dicionarioGrafos[indiceVisitado].get('Adjacencia'):
-            if self.dicionarioGrafos[indiceVerticeAdj]['Cor'] == 'Branco':
+            #Identifica ciclos no grafo
+            if self.dicionarioGrafos[indiceVerticeAdj]['Cor'] == 'Cinza':
+                self.ciclos += 1
+                
+            #Vai para o próximo grafo
+            elif self.dicionarioGrafos[indiceVerticeAdj]['Cor'] == 'Branco':
                 self.verticeAnterior = self.dicionarioGrafos[indiceVisitado].get('Vertice')
                 self.DFS_visita_vertice(verticeAnterior, indiceVerticeAdj)
-            
-            #Identifica ciclos no grafo
-            elif self.dicionarioGrafos[indiceVerticeAdj]['Cor'] == 'Cinza':
-                self.ciclos += 1
 
         if self.dicionarioGrafos[indiceVisitado]['Anterior'] != 'Raiz': 
             #Conta um ao finalizar

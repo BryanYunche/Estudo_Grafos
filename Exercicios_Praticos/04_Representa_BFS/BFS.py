@@ -16,7 +16,6 @@ class BFS(Grafo):
 
         #Informações extraidas do grafo
         self.dicionarioGrafos = []
-  
 
         #Determina fonte e sumidouro do grafo
         self.vertices_Fonte = []
@@ -26,6 +25,12 @@ class BFS(Grafo):
 
     def get_dicionario_grafos(self):
         return self.dicionarioGrafos
+    
+    def get_fontes(self):
+        return self.vertices_Fonte
+    
+    def get_sumidouro(self):
+        return self.vertices_Sumidouro
 
     def BFS_constroi_dicionario(self):
         #Gera a lista de aDjacências caso não exista ainda 
@@ -136,6 +141,10 @@ class BFS(Grafo):
                 
                 #Preenche arvore
                 self.controi_arvore(vertice_fonte)
+
+            #Se o vertice fonte não possuir uma adjacência a arvore dele será ele mesmo
+            elif (self.dicionarioGrafos[self.get_vertices().index(vertice_fonte)]['Adjacencia'] == []) and (self.dicionarioGrafos[self.get_vertices().index(vertice_fonte)]['Vertice Fonte'] == vertice_fonte):
+                self.dicionarioGrafos[self.get_vertices().index(vertice_fonte)]['Arvore'] = [vertice_fonte] 
 
     
     def controi_arvore(self, vertice_raiz):

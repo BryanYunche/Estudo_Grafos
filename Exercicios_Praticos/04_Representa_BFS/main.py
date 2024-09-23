@@ -21,3 +21,14 @@ grafo01.BFS_Busca('A')
 for dicionario in range(len(grafo01.get_dicionario_grafos())):
     print(grafo01.get_dicionario_grafos()[dicionario])
 
+print('=====================================================')
+grafo01.BFS_Busca('E')
+
+for dicionario in range(len(grafo01.get_dicionario_grafos())):
+    print(grafo01.get_dicionario_grafos()[dicionario])
+
+print('=====================================================')
+grafo01.encontra_fontes_sumidouro()
+
+print(f'Fontes: {grafo01.get_fontes()}')
+print(f'Sumidouros: {grafo01.get_sumidouro()}')

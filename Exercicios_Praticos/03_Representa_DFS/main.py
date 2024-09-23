@@ -17,9 +17,11 @@ for dicionario in range(len(grafo01.get_dicionario_grafos())):
     print(grafo01.get_dicionario_grafos()[dicionario])
 
 print('=====================================================')
-print(f'Ciclos do grafo: {grafo01.ciclos}')
 print(f'Número de Arvores: {grafo01.arvores}')
 
 print('=====================================================')
 grafo01.imprime_matriz_adj()
+
+print('=====================================================')
+grafo01.imprime_lista_adj()
 

@@ -135,7 +135,6 @@ class Grafo():
         if self.listaAdj == []:
             self.gera_lista_adj()
 
-
         for lista in self.listaAdj:
             if len(lista) == 1:
                 print(f'Vertice: {lista[0]}\nAdjacêcnias: Não possui.')
