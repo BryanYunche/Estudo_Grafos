@@ -32,3 +32,6 @@ grafo01.encontra_fontes_sumidouro()
 
 print(f'Fontes: {grafo01.get_fontes()}')
 print(f'Sumidouros: {grafo01.get_sumidouro()}')
+
+print('=====================================================')
+grafo01.imprime_matriz_adj()

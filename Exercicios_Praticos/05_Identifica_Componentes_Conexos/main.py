@@ -15,7 +15,10 @@ grafo01.imprime_matriz_adj()
 print('=====================================================')
 print(f'Quantidade de Ciclos do Grafo: {grafo01.get_ciclos()}')
 
-
 print('=====================================================')
 grafo01.imprime_lista_adj()
+
+print('=====================================================')
+for dicio in grafo01.get_dicionario_grafos():
+    print(dicio)
 
