@@ -9,7 +9,7 @@ class DFS(Grafo):
         
         #Adiciona novos atributos
         self.arvores = 0
-        self.ciclos = 0
+        self.ciclos = False
         self.tempo = 0
         self.verticeAnterior = None
         self.dicionarioGrafos = []
@@ -80,7 +80,7 @@ class DFS(Grafo):
         for indiceVerticeAdj in self.dicionarioGrafos[indiceVisitado].get('Adjacencia'):
             #Identifica ciclos no grafo
             if self.dicionarioGrafos[indiceVerticeAdj]['Cor'] == 'Cinza':
-                self.ciclos += 1
+                self.ciclos = True
                 
             #Vai para o próximo grafo
             elif self.dicionarioGrafos[indiceVerticeAdj]['Cor'] == 'Branco':

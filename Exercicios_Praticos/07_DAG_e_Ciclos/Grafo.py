@@ -31,12 +31,14 @@ class Grafo():
     
     def set_matriz_adj(self, matrizAdj):
         self.matrizAdj = matrizAdj
+        self.consome_matriz()
     
     def get_lista_adj(self):
         return self.listaAdj
     
     def set_lista_adj(self, listaAdj):
         self.listaAdj = listaAdj
+        self.consome_lista()
     
     #Função Interna
     #Verifica a existências de uma matriz valida
@@ -88,7 +90,7 @@ class Grafo():
         if self.validaMatriz():
             self.vertices = [vertice for vertice in range(len(self.matrizAdj))]
             arestas = []
-            for linha in self.matrizAdj:
+            for linha in self.matrizAdj[0]:
                 for coluna in self.matrizAdj:
                     if self.matrizAdj[linha][coluna] == 1:
                         arestaTemp = (linha,coluna)
