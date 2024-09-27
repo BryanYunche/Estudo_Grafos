@@ -78,7 +78,7 @@ class Grafo():
                 listaTemp.append(vertice) 
                 for aresta in self.arestas:
                     verticeOrigem, verticeDestino = aresta
-                    if vertice == verticeOrigem:
+                    if (vertice == verticeOrigem) or str(vertice) == str(verticeOrigem):
                         listaTemp.append(verticeDestino)
                 listasDeAdjacencias.append(listaTemp)
 
@@ -90,11 +90,12 @@ class Grafo():
         if self.validaMatriz():
             self.vertices = [vertice for vertice in range(len(self.matrizAdj))]
             arestas = []
-            for linha in self.matrizAdj[0]:
-                for coluna in self.matrizAdj:
+            for linha in range(len(self.vertices)):
+                for coluna in range(len(self.vertices)):
                     if self.matrizAdj[linha][coluna] == 1:
-                        arestaTemp = (linha,coluna)
+                        arestaTemp = (str(linha),str(coluna))
                         arestas.append(arestaTemp)
+            self.arestas = arestas
     
     #Função interna do grafo
     #Gerar vertices e arestas a partir de uma lista de adjácências no formato:

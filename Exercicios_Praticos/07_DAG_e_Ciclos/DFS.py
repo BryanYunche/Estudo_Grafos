@@ -23,8 +23,9 @@ class DFS(Grafo):
 
     #Constroi dicionário de grafos Brancos
     def DFS_constroi_dicionario(self):
-        #Gera a lista de aDjacências caso não exista ainda 
-        self.gera_lista_adj()
+        #Gera a lista de aDjacências caso não exista ainda
+        if self.get_lista_adj() == []: 
+            self.gera_lista_adj()
 
         #Constroi os dicionários
         for vertice in self.get_lista_adj():
