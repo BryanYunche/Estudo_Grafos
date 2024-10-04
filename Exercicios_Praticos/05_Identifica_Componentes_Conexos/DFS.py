@@ -95,6 +95,9 @@ class DFS(Grafo):
             self.dicionarioGrafos[indiceVisitado]['Cor'] = 'Preto'
             self.dicionarioGrafos[indiceVisitado]['Fim'] = self.tempo
         else:
+            #Conta um ao finalizar
+            self.tempo += 1
+            
             #Pinta de Preto caso saia da pilha
             self.dicionarioGrafos[indiceVisitado]['Cor'] = 'Preto'
             self.dicionarioGrafos[indiceVisitado]['Fim'] = self.tempo

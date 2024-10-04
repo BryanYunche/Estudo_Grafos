@@ -15,20 +15,10 @@ matriz = [[0, 1, 0, 0, 1, 0, 0, 1],
 grafo01.set_matriz_adj(matriz)
 grafo01.imprime_matriz_adj()
 
-
-"""print(grafo01.arestas)
-grafo01.gera_lista_adj()
-print(grafo01.get_lista_adj())
-print(grafo01.get_vertices())
-
-for vertice in grafo01.get_lista_adj():
-    print(vertice)
-
-grafo01.DFS_constroi_dicionario()"""
-
-
-
+print("===============================================")
 grafo01.DFS_procura()
-
 for dicionario in range(len(grafo01.get_dicionario_grafos())):
     print(grafo01.get_dicionario_grafos()[dicionario])
+
+print("===============================================")
+print(f'O grafo possui Ciclos: {grafo01.get_ciclos()}')

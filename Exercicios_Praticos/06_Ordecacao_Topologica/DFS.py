@@ -13,6 +13,7 @@ class DFS(Grafo):
         self.tempo = 0
         self.verticeAnterior = None
         self.dicionarioGrafos = []
+        self.ordem_topologica = []
 
 
     def get_dicionario_grafos(self):
@@ -20,6 +21,9 @@ class DFS(Grafo):
     
     def get_ciclos(self):
         return self.ciclos
+    
+    def get_ordem_topologica(self):
+        return self.ordem_topologica
 
     #Constroi dicionário de grafos Brancos
     def DFS_constroi_dicionario(self):
@@ -94,10 +98,15 @@ class DFS(Grafo):
             #Pinta de Preto caso saia da pilha
             self.dicionarioGrafos[indiceVisitado]['Cor'] = 'Preto'
             self.dicionarioGrafos[indiceVisitado]['Fim'] = self.tempo
+            self.ordem_topologica.append(self.dicionarioGrafos[indiceVisitado]['Vertice'])
         else:
+            #Conta um ao finalizar
+            self.tempo += 1
+
             #Pinta de Preto caso saia da pilha
             self.dicionarioGrafos[indiceVisitado]['Cor'] = 'Preto'
             self.dicionarioGrafos[indiceVisitado]['Fim'] = self.tempo
+            self.ordem_topologica.append(self.dicionarioGrafos[indiceVisitado]['Vertice'])
         
             
 
