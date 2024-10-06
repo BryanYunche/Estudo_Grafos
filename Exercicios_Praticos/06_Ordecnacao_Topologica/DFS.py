@@ -9,7 +9,7 @@ class DFS(Grafo):
         
         #Adiciona novos atributos
         self.arvores = 0
-        self.ciclos = 0
+        self.ciclos = False
         self.tempo = 0
         self.verticeAnterior = None
         self.dicionarioGrafos = []
@@ -38,8 +38,15 @@ class DFS(Grafo):
                 #Considerando que a ordem das listas de adjacencias é igual a ordem da lista de vertices
                 #Usarei a lista de vertices para identificar o indice dos dicionários
                 #Substituirei as adjacencias pelo indice dos vertices que seriam essas adjacências
+
+                #faz uma lista dos indices vertices adjacentes
+                verticesAdjTemp = []
+                for verticeAdj in vertice[1:]:
+                    verticeAdj = str(verticeAdj)
+                    verticesAdjTemp.append(self.vertices.index(verticeAdj))            
+                
                 self.dicionarioGrafos.append({'Vertice': vertice[0], 
-                                              'Adjacencia': [self.get_vertices().index(verticeAdj) for verticeAdj in vertice[1:] if verticeAdj in self.get_vertices()], 
+                                              'Adjacencia': verticesAdjTemp, 
                                               'Cor': 'Branco', 
                                               'Anterior': None,
                                               'Inicio': 0, 
@@ -69,6 +76,8 @@ class DFS(Grafo):
                 
                 #Conta um ao tempo do contador
                 self.tempo += 1
+        
+        self.ordem_topologica = self.ordem_topologica[::-1]
 
     #Percorre Grafo (Terminar de fazer isso)
     def DFS_visita_vertice(self, verticeAnterior, indiceVisitado):
@@ -84,7 +93,7 @@ class DFS(Grafo):
         for indiceVerticeAdj in self.dicionarioGrafos[indiceVisitado].get('Adjacencia'):
             #Identifica ciclos no grafo
             if self.dicionarioGrafos[indiceVerticeAdj]['Cor'] == 'Cinza':
-                self.ciclos += 1
+                self.ciclos = True
                 
             #Vai para o próximo grafo
             elif self.dicionarioGrafos[indiceVerticeAdj]['Cor'] == 'Branco':
@@ -109,4 +118,19 @@ class DFS(Grafo):
             self.ordem_topologica.append(self.dicionarioGrafos[indiceVisitado]['Vertice'])
         
             
+    def detalhes_Grafo(self):
+        self.imprime_matriz_adj()
+        print("===============================================")
+        self.DFS_procura()
+        for dicionario in range(len(self.get_dicionario_grafos())):
+            print(self.get_dicionario_grafos()[dicionario])
 
+        print("===============================================")
+        print(f'O grafo possui Ciclos: {self.get_ciclos()}')
+        print("===============================================")
+        #valida se é um DAG, se possuir ciclos não é um dag!
+        print(f'O grafo é um DAG?: {False if self.get_ciclos() else True}')
+        print("===============================================")
+        print(f'Ordem topológica do Grafo: {self.get_ordem_topologica()}')
+        print("===============================================")
+        self.imprime_lista_adj()

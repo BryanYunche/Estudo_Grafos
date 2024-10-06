@@ -31,6 +31,8 @@ class Grafo():
     
     def set_matriz_adj(self, matrizAdj):
         self.matrizAdj = matrizAdj
+        self.consome_matriz()
+        self.gera_lista_adj()
     
     def get_lista_adj(self):
         return self.listaAdj
@@ -69,13 +71,15 @@ class Grafo():
     #Função interna
     #Gera Lista de de ajacências
     def gera_lista_adj(self):
-        if ((self.listaAdj == []) and (self.vertices != [])):
+        if ((self.listaAdj == [])):
             listasDeAdjacencias = []
             for vertice in self.vertices:
                 listaTemp = []
                 listaTemp.append(vertice) 
                 for aresta in self.arestas:
                     verticeOrigem, verticeDestino = aresta
+                    vertice = str(vertice)
+                    verticeOrigem = str(verticeOrigem)
                     if vertice == verticeOrigem:
                         listaTemp.append(verticeDestino)
                 listasDeAdjacencias.append(listaTemp)
@@ -88,11 +92,12 @@ class Grafo():
         if self.validaMatriz():
             self.vertices = [vertice for vertice in range(len(self.matrizAdj))]
             arestas = []
-            for linha in self.matrizAdj:
-                for coluna in self.matrizAdj:
+            for linha in range(len(self.matrizAdj)):
+                for coluna in range(len(self.matrizAdj)):
                     if self.matrizAdj[linha][coluna] == 1:
                         arestaTemp = (linha,coluna)
                         arestas.append(arestaTemp)
+            self.arestas = arestas
     
     #Função interna do grafo
     #Gerar vertices e arestas a partir de uma lista de adjácências no formato:
